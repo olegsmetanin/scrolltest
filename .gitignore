@@ -1,7 +1,0 @@
-.DS_Store
-.grunt
-dist
-tmp
-vendor
-node_modules
-npm-debug.log
