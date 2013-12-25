@@ -38,8 +38,13 @@ module.exports = function(grunt) {
     	vendor: {
     		expand: true, src: ['vendor/**'], dest: 'dist/'
     	} 
+    },
+    'gh-pages': {
+      options: {
+        base: 'dist'
+      },
+      src: ['**']
     }
-
 
   });
 
@@ -49,6 +54,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-frep');
   grunt.loadNpmTasks('grunt-sync-pkg');
+  grunt.loadNpmTasks('grunt-gh-pages');
 
   // Default task to be run with the "grunt" command.
   grunt.registerTask('default', [
