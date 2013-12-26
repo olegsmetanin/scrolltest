@@ -10,17 +10,17 @@ module.exports = function (grunt) {
 	// Project configuration.
 	grunt.initConfig({
 
-		// Project metadata
 		pkg: grunt.file.readJSON('package.json'),
+
 		clean: {
-			dist: ['dist/'],
+			dist: ['dist/']
 		},
 
 		assemble: {
 			options: {
 				flatten: false,
 				assets: 'dist',
-				data: 'src/data/*.{json,yml}',
+				data: 'src/**/data/*.{json,yml}',
 				partials: 'src/partials/*.hbs',
 				layoutdir: 'src/layouts'
 			},
@@ -31,6 +31,7 @@ module.exports = function (grunt) {
 				dest: 'dist/'
 			}
 		},
+
 		copy: {
 			all: {
 				expand: true,
@@ -48,8 +49,9 @@ module.exports = function (grunt) {
 					'vendor/**'
 				],
 				dest: 'dist/'
-			},
+			}
 		},
+
 		'gh-pages': {
 			options: {
 				base: 'dist'

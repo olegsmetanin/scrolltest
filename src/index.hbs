@@ -1,6 +1,13 @@
 ---
 layout: default.hbs
 title: "This is index page"
+tags: ["qwe","asd"]
 ---
 
 Hello all
+Page tags:
+<ul>
+	{{#tags }}
+		<li > <a  href ="/tag/{{tag }}.html" > {{tag }} </a > </li >
+	{{/tags }}
+</ul>

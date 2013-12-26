@@ -61,7 +61,14 @@
 
       	<!-- Main component for a primary marketing message or call to action -->
 
-		{{> body }}
+	    Layout tags:
+	    <ul>
+		    {{#tags }}
+			    <li > <a  href ="/tag/{{tag }}.html" > {{tag }} </a > </li >
+		    {{/tags }}
+	    </ul>
+
+	    {{> body }}
 
     </div> <!-- /container -->
 
