@@ -14,6 +14,10 @@
 	  <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
 	<![endif]-->
 
+	<script src="./vendor/jquery/jquery.min.js"></script>
+	<script src="./vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="./vendor/skrollr/dist/skrollr.min.js"></script>
+
   </head>
   <body>
 
@@ -61,16 +65,103 @@
 
       	<!-- Main component for a primary marketing message or call to action -->
 
-		
+	    Layout tags:
+	    <ul>
+		    
+			    <li > <a  href ="/tag/abc.html" > abc </a > </li >
+		    
+			    <li > <a  href ="/tag/def.html" > def </a > </li >
+		    
+	    </ul>
 
-Hello all
+	    
 
+<script>
+	var language = (window.navigator.userLanguage || window.navigator.language).substring(0, 2);
+
+
+</script>
+
+
+	
+		<ul>
+			
+				
+					<li>
+						<div>
+
+
+							<a href="platform/blog/2014-01/platform-post-2.html">2 - Platform blog 2</a>
+						</div>
+						<div>
+							
+
+This is platform post 2. Content
+
+						</div>
+						<div>
+							
+								<span> abc</span>
+							
+
+
+
+						</div>
+						2014-01-01
+					</li>
+				
+			
+				
+					<li>
+						<div>
+
+
+							<a href="platform/blog/2014-01/platform-post-1.html">1 - Platform blog 1</a>
+						</div>
+						<div>
+							
+
+This is platform post 1. Content
+
+See also:
+{{#each page.related}}
+	<a href="{{relative ../page.dest this.dest}}">{{this.data.title}}</a>
+
+{{/each}}
+						</div>
+						<div>
+							
+								<span> abc</span>
+							
+								<span> def</span>
+							
+
+
+
+						</div>
+						2014-01-01
+					</li>
+				
+			
+		</ul>
+	
+
+
+
+
+
+<ul>
+	
+		<li><a href="/tag/abc.html"> abc </a></li>
+	
+		<li><a href="/tag/def.html"> def </a></li>
+	
+
+</ul>
 
     </div> <!-- /container -->
 
-	<script src="./vendor/jquery/jquery.min.js"></script>
-	<script src="./vendor/bootstrap/dist/js/bootstrap.min.js"></script>
-	<script src="./vendor/skrollr/dist/skrollr.min.js"></script>
+
 
 
 
