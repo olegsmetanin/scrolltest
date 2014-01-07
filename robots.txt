@@ -1,2 +1,7 @@
 User-agent: *
 
+Disallow: /dist/404.html
+Disallow: /dist/platform/blog/2014/01/index.html
+Disallow: /dist/index.html
+Disallow: /dist/platform/blog/2014/02/index.html
+Disallow: /dist/platform/blog/2014/index.html
