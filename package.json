@@ -2,7 +2,11 @@
   "name": "scrolltest",
   "description": "scrolltest",
   "version": "0.0.1",
-  "homepage": "https://github.com/olegsmith/scrolltest",
+  "homepage": "http://olegsmith.github.io/scrolltest",
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/olegsmith/scrolltest"
+	},
   "author": [
     {
       "name": "Oleg Smetanin",
@@ -15,6 +19,18 @@
       "url": "http://opensource.org/licenses/MIT"
     }
   ],
+	"dependencies": {
+		"assemble-handlebars": "~0.2.0",
+		"assemble-yaml": "~0.1.5",
+		"inflection": "~1.2.6",
+		"lodash": "~1.3.1",
+		"resolve-dep": "~0.1.1",
+		"underscore.string": "~2.3.3",
+		"async": "~0.2.9",
+		"moment": "~2.2.1",
+		"frep": "~0.1.2",
+		"digits": "~0.1.2"
+	},
   "devDependencies": {
     "assemble": "~0.4.33",
     "grunt": "~0.4.2",
@@ -24,6 +40,14 @@
     "grunt-sync-pkg": "~0.1.2",
     "handlebars-helper-prettify": "~0.2.1",
     "pretty": "~0.1.1",
-    "grunt-gh-pages": "~0.8.1"
+    "grunt-gh-pages": "~0.8.1",
+	"grunt-contrib-connect":"~0.6.0",
+	"grunt-contrib-watch":"~0.5.3",
+	  "handlebars-helpers": "~0.4.2",
+	  "assemble-related-pages": "~0.0.4",
+	  "assemble-contrib-sitemap":"0.1.6",
+	  "jstoxml": "*",
+	  "async": "~0.2.9",
+	  "handlebars": "1.1.2"
   }
 }

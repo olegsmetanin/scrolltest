@@ -1,0 +1,43 @@
+{{#extend "masterpage"}}
+	{{#content "container"}}
+
+
+
+
+
+		Blog List:
+		<ul>
+			{{#categories}}
+				{{#is category "blogs"}}
+					{{#pages}}
+						{{#datebetween data.date "2014-01-01" "2015-01-01"}}
+							<li>
+								{{renderpage this}}
+							</li>
+						{{/datebetween}}
+					{{/pages}}
+				{{/is}}
+			{{/categories}}
+		</ul>
+
+		Blog Tags:
+		<ul>
+			{{#tags }}
+				<li><a href="/tag/{{tag }}.html"> {{tag }} </a></li>
+			{{/tags }}
+		</ul>
+
+		On post:
+		Title:{{title}}
+		{{> body }}
+		Date: {{date}}
+
+		Page tags:
+		<ul>
+			{{#each page.tags}}
+				<li><a href="/tag/{{this }}.html"> {{this }} </a></li>
+			{{/each }}
+		</ul>
+
+	{{/content}}
+{{/extend}}

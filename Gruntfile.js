@@ -7,6 +7,8 @@
 
 module.exports = function (grunt) {
 
+	var helpers = require('handlebars-helpers');
+
 	// Project configuration.
 	grunt.initConfig({
 
@@ -19,18 +21,41 @@ module.exports = function (grunt) {
 		assemble: {
 			options: {
 				flatten: false,
+				helpers:["src/_helpers/*.js"],
+				plugins: [ 'assemble-related-pages', 'src/_plugins/*.js' ],
 				assets: 'dist',
-				data: 'src/**/data/*.{json,yml}',
-				partials: 'src/partials/*.hbs',
-				layoutdir: 'src/layouts'
+				partials: 'src/_partials/*.hbs',
+				layoutdir: 'src/_layouts',
+				sitemap: {
+					exclude: ['index']
+				}
 			},
 			all: {
 				expand: true,
 				cwd: "src/",
-				src: ['*.hbs', 'modules/**/*.hbs'],
-				dest: 'dist/'
+				src: ['*.hbs', 'platform/**/*.hbs', 'modules/**/*.hbs', 'tags/**/*.hbs'],
+				dest: 'dist'
 			}
 		},
+
+//		"ossemble": {
+//			options: {
+//				flatten: false,
+//				helpers:["src/_helpers/*.js"],
+//				plugins: [ 'assemble-related-pages', 'src/_plugins/*.js' ],
+//				assets: 'dist',
+//				data: 'src/**/_data/*.{json,yml}',
+//				partials: 'src/_partials/*.hbs',
+//				layoutdir: 'src/_layouts',
+//				layout: 'src/_layouts/index.hbs'
+//			},
+//			all: {
+//				expand: true,
+//				cwd: "src/",
+//				src: ['*.hbs', 'platform/**/*.hbs', 'modules/**/*.hbs'],
+//				dest: 'dist'
+//			}
+//		},
 
 		copy: {
 			all: {
@@ -38,9 +63,10 @@ module.exports = function (grunt) {
 				cwd: "src/",
 				src: [
 					'*.*',
+					'platform/**',
 					'modules/**',
 					'!**/*.hbs'],
-				dest: 'dist/'
+				dest: 'dist'
 			},
 			vendor: {
 				expand: true,
@@ -48,7 +74,7 @@ module.exports = function (grunt) {
 				src: [
 					'vendor/**'
 				],
-				dest: 'dist/'
+				dest: 'dist'
 			}
 		},
 
@@ -57,7 +83,20 @@ module.exports = function (grunt) {
 				base: 'dist'
 			},
 			src: ['**']
-		}
+		},
+		connect: {
+			server: {
+				options: {
+					keepalive:true,
+					port: 7777,
+					base: 'dist'
+				}
+			}
+		},
+		watch: {
+				options: {
+					livereload: true,
+				}}
 	});
 
 	// These plugins provide necessary tasks.
@@ -67,6 +106,10 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-frep');
 	grunt.loadNpmTasks('grunt-sync-pkg');
 	grunt.loadNpmTasks('grunt-gh-pages');
+	grunt.loadNpmTasks('grunt-contrib-connect');
+	grunt.loadNpmTasks('grunt-contrib-watch');
+
+	grunt.loadTasks('src/_tasks');
 
 	// Default task to be run with the "grunt" command.
 	grunt.registerTask('default', [
