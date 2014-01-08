@@ -1,26 +1,27 @@
-{{#extend "masterpage"}}
+{{#extend "masterpage0"}}
 	{{#content "container"}}
 
 		Blog List:
 		<ul>
-			{{#categories}}
-				{{#is category "blogs"}}
+			{{#allcategories}}
+				{{#is category "blogs0"}}
 					{{#pages}}
-						{{#datebetween data.date "2014-01-01" "2015-01-01"}}
+						{{#datebetween date "2014-01-01" "2015-01-01"}}
 							<li>
 								{{renderpage this}}
 							</li>
 						{{/datebetween}}
 					{{/pages}}
 				{{/is}}
-			{{/categories}}
+
+			{{/allcategories}}
 		</ul>
 
 		Blog Tags:
 		<ul>
-			{{#tags }}
+			{{#alltags }}
 				<li><a href="/tag/{{tag }}.html"> {{tag }} </a></li>
-			{{/tags }}
+			{{/alltags }}
 		</ul>
 
 		On post:
@@ -30,10 +31,9 @@
 
 		Page tags:
 		<ul>
-			{{#each page.tags}}
+			{{#each tags}}
 				<li><a href="/tag/{{this }}.html"> {{this }} </a></li>
 			{{/each }}
 		</ul>
-
 	{{/content}}
 {{/extend}}

@@ -1,9 +1,8 @@
 ---
-layout: body.hbs
 title: "Platform blog 2"
 categories: ["tagslist"]
 ---
 
-{{#withSort tags "tag" dir="asc"}}
+{{#withSort alltags "tag" dir="asc"}}
 	{{tag}} ({{length pages}})
 {{/withSort}}

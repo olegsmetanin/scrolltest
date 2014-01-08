@@ -1,0 +1,14 @@
+---
+title: "Platform blog 2"
+categories: ["toc"]
+---
+
+{{#allcategories}}
+	{{#is category "blogs"}}
+
+
+		{{#withSort pages "date" dir="desc"}}
+			{{formatDate date "%Y-%m"}} - {{title}}
+		{{/withSort}}
+	{{/is}}
+{{/allcategories}}

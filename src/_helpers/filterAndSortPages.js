@@ -5,10 +5,10 @@ module.exports.register = function (Handlebars, options) {
 			var newarr = [];
 
 			for (var i = 0; i < arr.length; i++) {
-				if (typeof arr[i].data.date === 'undefined') {
+				if (typeof arr[i].date === 'undefined') {
 					console.log(arr[i].src + " do not have data.date property");
 				} else {
-					var datetime = (new Date(arr[i].data.date)).getTime();
+					var datetime = (new Date(arr[i].date)).getTime();
 					var date1time = (new Date((typeof date1 === 'undefined') ? 0 : date1)).getTime();
 					var date2time = (new Date((typeof date2 === 'undefined') ? 8640000000000000 : date2)).getTime();
 					if ((datetime >= date1time) && (datetime < date2time)) {
@@ -26,7 +26,7 @@ module.exports.register = function (Handlebars, options) {
 
 				for (var i = 0; i < arr.length; i++) {
 
-					var tags = arr[i].data.tags;
+					var tags = arr[i].tags;
 
 					if (tags.indexOf(tag) != -1) {
 						newarr.push(arr[i]);
@@ -43,8 +43,8 @@ module.exports.register = function (Handlebars, options) {
 
 
 		outarr1.sort(function (a, b) {
-			var aProp = a.data.date;
-			var bProp = b.data.date;
+			var aProp = a.date;
+			var bProp = b.date;
 			if (aProp > bProp) {
 				return 1;
 			} else {
