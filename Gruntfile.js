@@ -53,16 +53,16 @@ module.exports = function (grunt) {
 					produce: [
 						{
 							producer: 'plain',
-							layout: 'src/_layouts/post0.hbs',
+							layout: 'src/_layouts/post.hbs',
 							options: {
-								category: 'blogs'
+								categories: ['blogs']
 							}
 						},
 						{
 							producer: 'index',
 							layout: 'src/_layouts/index.hbs',
 							options: {
-								category: 'blogs',
+								categories: ['blogs'],
 								title: "Main page",
 								pagesize: 5
 							}
@@ -71,7 +71,7 @@ module.exports = function (grunt) {
 							producer: 'blogindex',
 							layout: 'src/_layouts/index.hbs',
 							options: {
-								category: 'blogs',
+								categories: ['blogs'],
 								title: "Posts on ",
 								pagesize: 5,
 								path: 'platform/blog/:year/:month/:basename.html'
@@ -81,7 +81,7 @@ module.exports = function (grunt) {
 							producer: 'tag',
 							layout: 'src/_layouts/index.hbs',
 							options: {
-								category: 'blogs',
+								categories: ['blogs'],
 								title: "Tag ",
 								pagesize: 5,
 								path: 'tags'
@@ -91,21 +91,7 @@ module.exports = function (grunt) {
 							producer: 'plain',
 							layout: 'src/_layouts/plain.hbs',
 							options: {
-								category: 'errors'
-							}
-						},
-						{
-							producer: 'plain',
-							layout: 'src/_layouts/plain.hbs',
-							options: {
-								category: 'tagslist'
-							}
-						},
-						{
-							producer: 'plain',
-							layout: 'src/_layouts/plain.hbs',
-							options: {
-								category: 'toc'
+								categories: ['errors', 'tagslist', 'toc']
 							}
 						}
 					]
@@ -114,7 +100,7 @@ module.exports = function (grunt) {
 			copy: {
 				all: {
 					expand: true,
-					cwd: "src/",
+					cwd: "src/data",
 					src: [
 						'*.*',
 						'platform/**',
@@ -124,7 +110,7 @@ module.exports = function (grunt) {
 				},
 				vendor: {
 					expand: true,
-					cwd: "src/",
+					cwd: "src/data",
 					src: [
 						'vendor/**'
 					],

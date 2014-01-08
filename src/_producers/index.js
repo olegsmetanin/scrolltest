@@ -7,22 +7,20 @@ module.exports.register = function (yassemble) {
 
 		var title = options.title,
 
-			category = options.category,
+			category = options.categories[0],
 
-			items = _.filter(data.sourcedata, function (item) {
-				return (_.isArray(item.categories) ? item.categories.indexOf(category) !== -1 : item.categories === category)
-			}),
+			filteredItems = yassemble.utils.filterByCategories(data.sourcedata, options.categories),
 
 			pagesize = options.pagesize,
 
-			cmax = Math.ceil(items.length / pagesize),
+			cmax = Math.ceil(filteredItems.length / pagesize),
 
-			indexPages = [],
-			
+			pages = [],
+
 			c = 0;
 
 		while (c < cmax) {
-			indexPages.push({
+			pages.push({
 				title: title,
 				categories: ["index"],
 				index_start: c * pagesize,
@@ -34,6 +32,6 @@ module.exports.register = function (yassemble) {
 			c += 1;
 		}
 
-		return indexPages;
+		return pages;
 	});
 };

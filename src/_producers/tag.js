@@ -19,15 +19,9 @@ module.exports.register = function (yassemble) {
 
 		var title = options.title,
 
-			category = options.category,
+			category = options.categories[0],
 
-			filteredItems = _.filter(data.sourcedata, function (item) {
-				if (typeof item.categories === 'undefined') {
-					return false;
-				} else {
-					return (_.isArray(item.categories) ? item.categories.indexOf(category) !== -1 : item.categories === category)
-				}
-			}),
+			filteredItems = yassemble.utils.filterByCategories(data.sourcedata, options.categories),
 
 			groupByTag = yassemble.utils.groupCollectionByTerm(filteredItems, 'tags', 'tag', 'pages'),
 
@@ -38,11 +32,11 @@ module.exports.register = function (yassemble) {
 					path = options.path,
 					pagesize = options.pagesize,
 					cmax = Math.ceil(items.length / pagesize),
-					indexPages = [],
+					pages = [],
 					c = 0;
 
 				while (c < cmax) {
-					indexPages.push({
+					pages.push({
 						title: title + tag,
 						categories: ["tag"],
 						index_start: c * pagesize,
@@ -55,7 +49,8 @@ module.exports.register = function (yassemble) {
 					c += 1;
 				}
 
-				return indexPages;
+				return pages;
+
 			}).flatten();
 
 		return tagPages;

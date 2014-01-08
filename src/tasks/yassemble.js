@@ -113,7 +113,8 @@ module.exports = function (grunt) {
 			},
 
 			utils: {
-				groupCollectionByTerm:groupCollectionByTerm
+				groupCollectionByTerm: groupCollectionByTerm,
+				filterByCategories: filterByCategories
 			}
 		}
 
@@ -193,7 +194,7 @@ module.exports = function (grunt) {
 			var layout = handlebars.compile(pagelayout);
 			var ctx = pagectx;
 			ctx.alltags = yassemble.context.alltags;
-			ctx.allcategories=yassemble.context.allcategories;
+			ctx.allcategories = yassemble.context.allcategories;
 			var pagehtml = layout(ctx);
 			grunt.file.write(self.options().dest + "/" + ctx.path + (ctx.path == '' ? '' : "/") + ctx.basename + ".html", pagehtml);
 			grunt.log.writeln(("OK").green);
@@ -203,6 +204,21 @@ module.exports = function (grunt) {
 
 
 		// Utils
+
+		function filterByCategories(array, categories) {
+
+			if (typeof categories === 'undefined' || !_.isArray(categories)) {
+				return []
+			} else {
+				return _.filter(array, function (item) {
+					if ((typeof item.categories === 'undefined')) {
+						return false;
+					} else {
+						return (_.intersection(item.categories, categories).length !== 0)
+					}
+				})
+			}
+		}
 
 
 		function groupCollectionByTerm(arr, prop, term, val) {

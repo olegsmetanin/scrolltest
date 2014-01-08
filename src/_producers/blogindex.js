@@ -18,11 +18,9 @@ module.exports.register = function (yassemble) {
 
 		var title = options.title,
 
-			category = options.category,
+			category = options.categories[0],
 
-			filteredItems = _.filter(data.sourcedata, function (item) {
-				return (_.isArray(item.categories) ? item.categories.indexOf(category) !== -1 : item.categories === category)
-			}),
+			filteredItems = yassemble.utils.filterByCategories(data.sourcedata, options.categories),
 
 			groupByYear = _.groupBy(filteredItems, function (item) {
 				return moment(item.date).format("YYYY");
@@ -34,11 +32,11 @@ module.exports.register = function (yassemble) {
 					period_end = moment(year).add('years', 1).format("YYYY"),
 					pagesize = options.pagesize,
 					cmax = Math.ceil(items.length / pagesize),
-					indexPages = [],
+					pages = [],
 					c = 0;
 
 				while (c < cmax) {
-					indexPages.push({
+					pages.push({
 						title: title + year,
 						categories: ["index"],
 						index_start: c * pagesize,
@@ -52,7 +50,8 @@ module.exports.register = function (yassemble) {
 					c += 1;
 				}
 
-				return indexPages;
+				return pages;
+
 			}).flatten(),
 
 			groupByMonth = _.groupBy(filteredItems, function (item) {
@@ -65,11 +64,11 @@ module.exports.register = function (yassemble) {
 					period_end = moment(year).add('months', 1).format("YYYY-MM"),
 					pagesize = options.pagesize,
 					cmax = Math.ceil(items.length / pagesize),
-					indexPages = [],
+					pages = [],
 					c = 0;
 
 				while (c < cmax) {
-					indexPages.push({
+					pages.push({
 						title: title + year,
 						categories: ["index"],
 						index_start: c * pagesize,
@@ -83,7 +82,7 @@ module.exports.register = function (yassemble) {
 					c += 1;
 				}
 
-				return indexPages;
+				return pages;
 
 			}).flatten(),
 
