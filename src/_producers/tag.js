@@ -1,21 +1,8 @@
 module.exports.register = function (yassemble) {
 
 	var _ = require('lodash');
-	var moment = require('moment');
-
-
-//	---
-//		title: "Index"
-//	categories: ["tags"]
-//	index_start: 0
-//	index_end: 5
-//	select_cat: "tags"
-//	select_tag: "abc"
-//	---
 
 	yassemble.registerProducer('tag', function (data, options) {
-
-		//console.log('here');
 
 		var title = options.title,
 
@@ -44,7 +31,9 @@ module.exports.register = function (yassemble) {
 						select_cat: category,
 						path: path,
 						basename: tag + (c === 0 ? '' : cmax - c - 1 ),
-						select_tag: tag
+						select_tag: tag,
+						next: (c === 0 ? undefined : ( tag+ (c === 1 ? '': (cmax - c)))),
+						previous: ((cmax-c-1 === 0) ? undefined : (tag +(cmax - c -2)))
 					});
 					c += 1;
 				}

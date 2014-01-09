@@ -64,7 +64,7 @@ module.exports = function (grunt) {
 							options: {
 								categories: ['blogs'],
 								title: "Main page",
-								pagesize: 5
+								pagesize: 1
 							}
 						},
 						{
@@ -73,7 +73,7 @@ module.exports = function (grunt) {
 							options: {
 								categories: ['blogs'],
 								title: "Posts on ",
-								pagesize: 5,
+								pagesize: 1,
 								path: 'platform/blog/:year/:month/:basename.html'
 							}
 						},
@@ -83,7 +83,7 @@ module.exports = function (grunt) {
 							options: {
 								categories: ['blogs'],
 								title: "Tag ",
-								pagesize: 5,
+								pagesize: 1,
 								path: 'tags'
 							}
 						},

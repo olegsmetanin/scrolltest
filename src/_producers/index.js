@@ -26,8 +26,10 @@ module.exports.register = function (yassemble) {
 				index_start: c * pagesize,
 				index_end: (c + 1) * pagesize,
 				select_cat: category,
-				path: '',
-				basename: 'index' + (c === 0 ? '' : cmax - c - 1 )
+				path: '.',
+				basename: 'index' + (c === 0 ? '' : cmax - c - 1 ),
+				next: (c === 0 ? undefined : ('index' + (c === 1 ? '': (cmax - c)))),
+				previous: ((cmax-c-1 === 0) ? undefined : ('index' +(cmax - c -2)))
 			});
 			c += 1;
 		}

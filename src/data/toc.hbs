@@ -8,7 +8,7 @@ categories: ["toc"]
 
 
 		{{#withSort pages "date" dir="desc"}}
-			{{formatDate date "%Y-%m"}} - {{title}}
+			<p></p><a href="/{{path}}/{{basename}}.html">{{formatDate date "%Y-%m"}} - {{title}}</a></p>
 		{{/withSort}}
 	{{/is}}
 {{/allcategories}}

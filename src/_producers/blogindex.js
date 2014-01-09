@@ -45,7 +45,9 @@ module.exports.register = function (yassemble) {
 						path: 'platform/blog/' + year,
 						basename: 'index' + (c === 0 ? '' : cmax - c - 1 ),
 						period_start: period_start,
-						period_end: period_end
+						period_end: period_end,
+						next: (c === 0 ? undefined : ('index' + (c === 1 ? '': (cmax - c)))),
+						previous: ((cmax-c-1 === 0) ? undefined : ('index' +(cmax - c -2)))
 					});
 					c += 1;
 				}
@@ -77,7 +79,9 @@ module.exports.register = function (yassemble) {
 						path: 'platform/blog/' + moment(year).format("YYYY/MM"),
 						basename: 'index' + (c === 0 ? '' : cmax - c - 1 ),
 						period_start: period_start,
-						period_end: period_end
+						period_end: period_end,
+						next: (c === 0 ? undefined : ('index' + (c === 1 ? '': (cmax - c)))),
+						previous: ((cmax-c-1 === 0) ? undefined : ('index' +(cmax - c -2)))
 					});
 					c += 1;
 				}
