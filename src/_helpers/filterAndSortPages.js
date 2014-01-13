@@ -6,7 +6,7 @@ module.exports.register = function (Handlebars, options) {
 
 			for (var i = 0; i < arr.length; i++) {
 				if (typeof arr[i].date === 'undefined') {
-					console.log(arr[i].src + " do not have data.date property");
+					console.log(arr[i].src + " do not have date property");
 				} else {
 					var datetime = (new Date(arr[i].date)).getTime();
 					var date1time = (new Date((typeof date1 === 'undefined') ? 0 : date1)).getTime();

@@ -1,0 +1,19 @@
+---
+title: "Archive"
+categories: ["archive"]
+---
+{{#allcategories}}
+	{{#is category "blogs"}}
+		{{#groupByYear pages}}
+			{{#each this}}
+
+				<p>{{year}}</p>
+				{{#pages}}
+					<h1>{{formatDate date "%Y-%m"}} <a href="/{{path}}/{{basename}}.html">{{title}}</a></h1>
+				{{/pages}}
+
+			{{/each}}
+		{{/groupByYear}}
+
+	{{/is}}
+{{/allcategories}}

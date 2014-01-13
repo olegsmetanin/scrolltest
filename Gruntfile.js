@@ -63,8 +63,8 @@ module.exports = function (grunt) {
 							layout: 'src/_layouts/index.hbs',
 							options: {
 								categories: ['blogs'],
-								title: "Main page",
-								pagesize: 1
+								title: "",
+								pagesize: 5
 							}
 						},
 						{
@@ -73,7 +73,7 @@ module.exports = function (grunt) {
 							options: {
 								categories: ['blogs'],
 								title: "Posts on ",
-								pagesize: 1,
+								pagesize: 5,
 								path: 'platform/blog/:year/:month/:basename.html'
 							}
 						},
@@ -83,7 +83,7 @@ module.exports = function (grunt) {
 							options: {
 								categories: ['blogs'],
 								title: "Tag ",
-								pagesize: 1,
+								pagesize: 5,
 								path: 'tags'
 							}
 						},
@@ -91,7 +91,7 @@ module.exports = function (grunt) {
 							producer: 'plain',
 							layout: 'src/_layouts/plain.hbs',
 							options: {
-								categories: ['errors', 'tagslist', 'toc']
+								categories: ['errors', 'tagslist', 'toc', 'archive']
 							}
 						}
 					]
